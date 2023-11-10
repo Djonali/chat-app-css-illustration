@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Inter&family=Outfit&family=Roboto&family=Rubik:wght@400;500;700&display=swap');
+
+/*--------------------------------RESETS--------------------------------*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+picture,
+figure {
+    margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+/*---------------------------------SCSS variables -----------------------------
+- Pale Violet (sub-heading at the top of the app UI): hsl(276, 100%, 81%)
+- Moderate Violet (chat on the left): hsl(276, 55%, 52%)
+- Desaturated Dark Violet (chat on the right): hsl(271, 15%, 43%)
+- Grayish Blue (placeholder text): hsl(206, 6%, 79%)
+- Very Dark Desaturated Violet (main heading): hsl(271, 36%, 24%)
+- Dark Grayish Violet (paragraph): hsl(270, 7%, 64%)
+
+
+- Light Magenta: hsl(293, 100%, 63%)
+- Light Violet: hsl(264, 100%, 61%)
+
+- White: hsl(0, 0%, 100%)
+- Light Grayish Violet (app background): hsl(270, 20%, 96%)
+- Very Dark Desaturated Violet (submit button background): hsl(271, 36%, 24%)
+- Very Light Magenta (radio button outline): hsl(289, 100%, 72%)
+------------------*/
+
+
+
+/*----TEXT-------*/
+$clr-pale-violet: hsl(276, 100%, 81%);
+$clr-moderate-violet: hsl(276, 55%, 52%);
+$clr-desat-dark-violet: hsl(271, 15%, 43%);
+$clr-grayish-blue: hsl(206, 6%, 79%);
+$clr-cdarksat-violet: hsl(271, 36%, 24%);
+$clr-dark-grayish-violet: hsl(270, 7%, 64%);
+/*-------------GRADIENT------------------*/
+$clr-light-magenta: hsl(293, 100%, 63%);
+$clr-light-violet: hsl(264, 100%, 61%);
+
+/*------SECONDARY-------*/
+$clr-white: hsl(0, 0%, 100%);
+$clr-light-grayish-violet: hsl(270, 20%, 96%);
+$clr-vdark-desat-violet: hsl(271, 36%, 24%);
+$clr-vlight-magenta: hsl(289, 100%, 72%);
+
+body {
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    color: black;
+    background-color: $clr-light-grayish-violet;
+    padding: 0;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.left-leaf {
+    width: 40%;
+    height: 85%;
+    background: linear-gradient($clr-light-magenta, $clr-light-violet);
+    border-bottom-left-radius: 50% 30%;
+    border-bottom-right-radius: 50% 40%;
+    position: absolute;
+    top: -10px;
+    left: -40px;
+}
+
+main {
+    width: 100%;
+    position: relative;
+    height: 100vh;
+}
+
+main::after {
+    content: '';
+    display: block;
+    width: 20%;
+    height: 85vh;
+    background: linear-gradient($clr-light-violet, $clr-light-magenta);
+    border-top-left-radius: 70% 35%;
+    border-top-right-radius: 0%;
+    position: absolute;
+    top: 15%;
+    bottom: -10px;
+    right: -20px;
+    opacity: .05;
+    z-index: -1;
+}
+
+
+
+.chat-box {
+    position: absolute;
+    top: 15%;
+    left: 32%;
+    width: 280px;
+    height: 500px;
+    border-radius: 30px;
+    background-color: $clr-white;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    .chat-box__inner {
+        background-color: $clr-light-grayish-violet;
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+
+        .chat-box__inner-top {
+            background: linear-gradient(to right, $clr-light-violet, $clr-light-magenta);
+            width: 100%;
+            height: 100px;
+            border-top-right-radius: 30px;
+            border-top-left-radius: 30px;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            position: relative;
+
+            .white-half-box {
+                width: 60%;
+                height: 25px;
+                margin: auto;
+                background-color: $clr-white;
+                border-bottom-right-radius: 25px;
+                border-bottom-left-radius: 25px;
+            }
+        }
+
+    }
+}
+
+.profile-box {
+    display: flex;
+
+    .profile-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+}
+
+.chat-window {
+    display: grid;
+    grid-auto-rows: auto;
+
+    .chat-item {
+        font-size: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        text-wrap: wrap;
+        min-width: 50px;
+        min-height: 20px;
+        max-width: 180px;
+        margin: 5px;
+        padding: 6px;
+        border-radius: 10px;
+
+        &.left {
+            justify-self: start;
+            background-color: lighten($color: $clr-pale-violet, $amount: 10%);
+            color: $clr-moderate-violet;
+        }
+
+        &.right {
+            justify-self: end;
+            background-color: $clr-white;
+            color: $clr-desat-dark-violet;
+        }
+
+
+    }
+
+}
+
+
+.note-box {
+    position: absolute;
+    width: 35%;
+    top: 40%;
+    left: 60%;
+
+    h1 {
+        font-size: 30px;
+        color: hsl(271, 36%, 24%);
+    }
+
+    p {
+        color: hsl(270, 7%, 64%);
+        text-wrap: wrap;
+        margin-top: 20px;
+        line-height: 25px;
+    }
+}
+
+/*SMALL-mobile phones */
+@media (min-width: 320px) and (max-width: 480px) {
+    main::after {
+        content: '';
+        display: block;
+        width: 50%;
+        height: 85vh;
+        background: linear-gradient($clr-light-violet, $clr-light-magenta);
+        border-top-left-radius: 70% 35%;
+        border-top-right-radius: 0%;
+        position: absolute;
+        top: 50%;
+        bottom: -10px;
+        right: -20px;
+        opacity: .05;
+        z-index: -1;
+    }
+
+    .left-leaf {
+        width: 60%;
+        height: 82%;
+        background: linear-gradient($clr-light-magenta, $clr-light-violet);
+        border-bottom-left-radius: 0%;
+        border-bottom-right-radius: 90%;
+        position: absolute;
+        top: -10px;
+        left: -40px;
+    }
+
+    .chat-box {
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        width: 280px;
+        height: 500px;
+    }
+
+    .note-box {
+        position: absolute;
+        width: 90%;
+        top: 92%;
+        left: 10%;
+        text-align: center;
+        margin-bottom: 20px;
+
+        h1 {
+            font-size: 30px;
+            color: hsl(271, 36%, 24%);
+        }
+
+        p {
+            color: hsl(270, 7%, 64%);
+            text-wrap: wrap;
+            margin-top: 20px;
+            line-height: 25px;
+            padding: 10px;
+        }
+    }
+
+}
+
+/*SMALL-ipads tablets*/
+@media (min-width: 481px) and (max-width: 768px) {
+    main::after {
+        content: '';
+        display: block;
+        width: 50%;
+        height: 85vh;
+        background: linear-gradient($clr-light-violet, $clr-light-magenta);
+        border-top-left-radius: 70% 35%;
+        border-top-right-radius: 0%;
+        position: absolute;
+        top: 50%;
+        bottom: -10px;
+        right: -20px;
+        opacity: .05;
+        z-index: -1;
+    }
+
+    .left-leaf {
+        width: 55%;
+        height: 82%;
+        background: linear-gradient($clr-light-magenta, $clr-light-violet);
+        border-bottom-left-radius: 0%;
+        border-bottom-right-radius: 90%;
+        position: absolute;
+        top: -10px;
+        left: -40px;
+    }
+
+    .chat-box {
+        position: absolute;
+        top: 10%;
+        left: 25%;
+        width: 280px;
+        height: 500px;
+    }
+
+    .note-box {
+        position: absolute;
+        width: 90%;
+        top: 90%;
+        left: 10%;
+        text-align: center;
+        margin-bottom: 20px;
+
+        h1 {
+            font-size: 30px;
+            color: hsl(271, 36%, 24%);
+        }
+
+        p {
+            color: hsl(270, 7%, 64%);
+            text-wrap: wrap;
+            margin-top: 20px;
+            line-height: 25px;
+            padding: 10px;
+        }
+    }
+}
+
+
+//MEDIUM --tablets 
+@media (min-width: 769px) and (max-width: 1024px) {
+    body {
+        background-color: green;
+    }
+
+    .note-box {
+        position: absolute;
+        width: 35%;
+        top: 40%;
+        left: 65%;
+    }
+}
+
+// BIG--desktops, large screens 
+@media (min-width: 1025px) and (max-width: 1200px) {
+   
+}
+
+
+//BIG --deskstop large
+@media (min-width: 1201px) {
+    //Noting to change
+}
