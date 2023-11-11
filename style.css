@@ -45,6 +45,10 @@ textarea {
 /*----TEXT-------*/
 /*-------------GRADIENT------------------*/
 /*------SECONDARY-------*/
+.text-white {
+  color: hsl(0, 0%, 100%);
+}
+
 body {
   font-family: "Rubik", sans-serif;
   font-size: 16px;
@@ -94,7 +98,7 @@ main::after {
   top: 15%;
   left: 32%;
   width: 280px;
-  height: 500px;
+  height: 580px;
   border-radius: 30px;
   background-color: hsl(0, 0%, 100%);
   padding: 10px;
@@ -109,7 +113,7 @@ main::after {
 .chat-box .chat-box__inner .chat-box__inner-top {
   background: linear-gradient(to right, hsl(264, 100%, 61%), hsl(293, 100%, 63%));
   width: 100%;
-  height: 100px;
+  height: 90px;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
   border-bottom-right-radius: 10px;
@@ -118,7 +122,7 @@ main::after {
 }
 .chat-box .chat-box__inner .chat-box__inner-top .white-half-box {
   width: 60%;
-  height: 25px;
+  height: 24px;
   margin: auto;
   background-color: hsl(0, 0%, 100%);
   border-bottom-right-radius: 25px;
@@ -127,11 +131,34 @@ main::after {
 
 .profile-box {
   display: flex;
+  height: 70px;
+  align-items: center;
+  position: relative;
+}
+.profile-box .less-icon {
+  margin-left: 8px;
 }
 .profile-box .profile-icon {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  border: 2px solid hsl(0, 0%, 100%);
+  margin: 8px;
+}
+.profile-box .profile-name {
+  display: inline-block;
+  color: hsl(206, 6%, 79%);
+  font-weight: 500;
+}
+.profile-box .profile-status {
+  display: block;
+  color: hsl(276, 55%, 52%);
+  font-size: 12px;
+  margin-top: 5px;
+}
+.profile-box .menu {
+  position: absolute;
+  right: 20px;
 }
 
 .chat-window {
@@ -145,20 +172,83 @@ main::after {
   text-wrap: wrap;
   min-width: 50px;
   min-height: 20px;
-  max-width: 180px;
+  max-width: 175px;
   margin: 5px;
   padding: 6px;
   border-radius: 10px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .chat-window .chat-item.left {
   justify-self: start;
   background-color: #edd1ff;
   color: hsl(276, 55%, 52%);
 }
+.chat-window .chat-item.left-tag {
+  justify-self: start;
+  height: 40px;
+  width: 190px;
+  max-width: 190px;
+  background: linear-gradient(to right, hsl(293, 100%, 63%), hsl(264, 100%, 61%));
+  color: hsl(276, 55%, 52%);
+  position: relative;
+  border-bottom-left-radius: 5px;
+  align-items: center;
+  justify-content: space-around;
+}
+.chat-window .chat-item.left-tag .hollow-circle {
+  background-color: transparent;
+  border: 2px solid #edd1ff;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+.chat-window .chat-item.left-tag span:nth-child(2) {
+  font-size: 12px;
+  color: #edd1ff;
+  margin-left: -10px;
+}
+.chat-window .chat-item.left-tag span:nth-child(3) {
+  color: hsl(0, 0%, 100%);
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: 5px;
+}
 .chat-window .chat-item.right {
   justify-self: end;
   background-color: hsl(0, 0%, 100%);
   color: hsl(271, 15%, 43%);
+}
+.chat-window .chat-item.right.no-bk {
+  background-color: transparent;
+}
+.chat-window .chat-item.right picture {
+  display: flex;
+}
+.chat-window .chat-item.right picture img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  margin-right: 8px;
+}
+.chat-window .chat-message {
+  width: 90%;
+  height: 40px;
+  background-color: white;
+  border-radius: 20px;
+  margin: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chat-window .chat-message span {
+  display: inline-block;
+  color: hsl(206, 6%, 79%);
+  font-size: 10px;
+  padding-left: 20px;
+}
+.chat-window .chat-message i {
+  padding: 5px;
+  font-size: 28px;
 }
 
 .note-box {
@@ -210,12 +300,12 @@ main::after {
     top: 10%;
     left: 10%;
     width: 280px;
-    height: 500px;
+    height: 570px;
   }
   .note-box {
     position: absolute;
     width: 90%;
-    top: 92%;
+    top: 98%;
     left: 10%;
     text-align: center;
     margin-bottom: 20px;
@@ -264,12 +354,12 @@ main::after {
     top: 10%;
     left: 25%;
     width: 280px;
-    height: 500px;
+    height: 570px;
   }
   .note-box {
     position: absolute;
     width: 90%;
-    top: 90%;
+    top: 95%;
     left: 10%;
     text-align: center;
     margin-bottom: 20px;
@@ -287,13 +377,17 @@ main::after {
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  body {
-    background-color: green;
+  .chat-box {
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    width: 280px;
+    height: 570px;
   }
   .note-box {
     position: absolute;
     width: 35%;
     top: 40%;
-    left: 65%;
+    left: 70%;
   }
 }/*# sourceMappingURL=style.css.map */

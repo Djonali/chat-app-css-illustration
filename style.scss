@@ -63,6 +63,11 @@ $clr-light-grayish-violet: hsl(270, 20%, 96%);
 $clr-vdark-desat-violet: hsl(271, 36%, 24%);
 $clr-vlight-magenta: hsl(289, 100%, 72%);
 
+
+.text-white {
+    color: $clr-white;
+}
+
 body {
     font-family: 'Rubik', sans-serif;
     font-size: 16px;
@@ -114,7 +119,7 @@ main::after {
     top: 15%;
     left: 32%;
     width: 280px;
-    height: 500px;
+    height: 580px;
     border-radius: 30px;
     background-color: $clr-white;
     padding: 10px;
@@ -129,7 +134,7 @@ main::after {
         .chat-box__inner-top {
             background: linear-gradient(to right, $clr-light-violet, $clr-light-magenta);
             width: 100%;
-            height: 100px;
+            height: 90px;
             border-top-right-radius: 30px;
             border-top-left-radius: 30px;
             border-bottom-right-radius: 10px;
@@ -138,7 +143,7 @@ main::after {
 
             .white-half-box {
                 width: 60%;
-                height: 25px;
+                height: 24px;
                 margin: auto;
                 background-color: $clr-white;
                 border-bottom-right-radius: 25px;
@@ -151,11 +156,38 @@ main::after {
 
 .profile-box {
     display: flex;
+    height: 70px;
+    align-items: center;
+    position: relative;
+
+    .less-icon {
+        margin-left: 8px;
+    }
 
     .profile-icon {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
+        border: 2px solid $clr-white;
+        margin: 8px;
+    }
+
+    .profile-name {
+        display: inline-block;
+        color: $clr-grayish-blue;
+        font-weight: 500;
+    }
+
+    .profile-status {
+        display: block;
+        color: $clr-moderate-violet;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .menu {
+        position: absolute;
+        right: 20px;
     }
 }
 
@@ -170,10 +202,11 @@ main::after {
         text-wrap: wrap;
         min-width: 50px;
         min-height: 20px;
-        max-width: 180px;
+        max-width: 175px;
         margin: 5px;
         padding: 6px;
         border-radius: 10px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
         &.left {
             justify-self: start;
@@ -181,14 +214,91 @@ main::after {
             color: $clr-moderate-violet;
         }
 
+        &.left-tag {
+            justify-self: start;
+            height: 40px;
+            width: 190px;
+            max-width: 190px;
+            background: linear-gradient(to right, $clr-light-magenta, $clr-light-violet);
+            color: $clr-moderate-violet;
+            position: relative;
+            border-bottom-left-radius: 5px;
+            align-items: center;
+            justify-content: space-around;
+
+            .hollow-circle {
+                background-color: transparent;
+                border: 2px solid lighten($color: $clr-pale-violet, $amount: 10%);
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+            }
+
+            span:nth-child(2) {
+                font-size: 12px;
+                color: lighten($color: $clr-pale-violet, $amount: 10%);
+                margin-left: -10px;              
+            }
+
+            span:nth-child(3) {
+                color: $clr-white;
+                font-size: 16px;
+                font-weight: 600;
+                margin-right:5px;
+
+            }
+        }
+
         &.right {
             justify-self: end;
             background-color: $clr-white;
             color: $clr-desat-dark-violet;
+
+            &.no-bk {
+                background-color: transparent;
+            }
+
+            picture {
+                display: flex;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 10px;
+                    margin-right: 8px;
+                }
+            }
         }
 
 
     }
+
+    .chat-message {
+        width: 90%;
+        height: 40px;
+        background-color: white;
+        border-radius: 20px;
+        margin: 20px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span {
+            display: inline-block;
+            color: $clr-grayish-blue;
+            font-size: 10px;
+            padding-left: 20px;
+        }
+
+        i{
+            padding: 5px;
+            font-size: 28px;
+        }
+    }
+
+
+
+
 
 }
 
@@ -246,13 +356,13 @@ main::after {
         top: 10%;
         left: 10%;
         width: 280px;
-        height: 500px;
+        height: 570px;
     }
 
     .note-box {
         position: absolute;
         width: 90%;
-        top: 92%;
+        top: 98%;
         left: 10%;
         text-align: center;
         margin-bottom: 20px;
@@ -307,13 +417,13 @@ main::after {
         top: 10%;
         left: 25%;
         width: 280px;
-        height: 500px;
+        height: 570px;
     }
 
     .note-box {
         position: absolute;
         width: 90%;
-        top: 90%;
+        top: 95%;
         left: 10%;
         text-align: center;
         margin-bottom: 20px;
@@ -336,22 +446,26 @@ main::after {
 
 //MEDIUM --tablets 
 @media (min-width: 769px) and (max-width: 1024px) {
-    body {
-        background-color: green;
+ 
+    
+    .chat-box {
+        position: absolute;
+        top: 20%;
+        left: 25%;
+        width: 280px;
+        height: 570px;
     }
 
     .note-box {
         position: absolute;
         width: 35%;
         top: 40%;
-        left: 65%;
+        left: 70%;
     }
 }
 
 // BIG--desktops, large screens 
-@media (min-width: 1025px) and (max-width: 1200px) {
-   
-}
+@media (min-width: 1025px) and (max-width: 1200px) {}
 
 
 //BIG --deskstop large
